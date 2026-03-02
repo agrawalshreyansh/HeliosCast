@@ -106,8 +106,8 @@ elif st.session_state.selected_tab == "📊 Training & Model Metrics":
     
     with col_img1:
         st.subheader("1. Feature Importance")
-        if os.path.exists("Feature_Impact.png"):
-            st.image("Feature_Impact.png", caption="How different weather factors impact power.")
+        if os.path.exists(os.path.join(base_path, "Feature_Impact.png")):
+            st.image(os.path.join(base_path, "Feature_Impact.png"), caption="How different weather factors impact power.")
         else:
             st.warning("feature_importance.png not found.")
 
@@ -120,12 +120,12 @@ elif st.session_state.selected_tab == "📊 Training & Model Metrics":
 
     st.subheader("3. Actual vs Predicted Curve")
     if os.path.exists("Prediction.png"):
-        st.image("Prediction.png", use_container_width=True, caption="Sample test results showing high correlation.")
+        st.image("Prediction.png", use_column_width=True, caption="Sample test results showing high correlation.")
     else:
         st.warning("actual_vs_pred.png not found.")
 
     st.subheader("4. Model Comparison")
     if os.path.exists("comparison.png"):
-        st.image("comparison.png", use_container_width=True, caption="Comparison of two different models trained on the same data.")
+        st.image("comparison.png", use_column_width=True, caption="Comparison of two different models trained on the same data.")
     else:
         st.warning("comparison.png not found.")
