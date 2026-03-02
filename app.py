@@ -106,8 +106,8 @@ elif st.session_state.selected_tab == "📊 Training & Model Metrics":
     
     with col_img1:
         st.subheader("1. Feature Importance")
-        if os.path.exists("Feature_Impact.png"):
-            st.image("Feature_Impact.png", caption="How different weather factors impact power.")
+        if os.path.exists(os.path.join(base_path, "Feature_Impact.png")):
+            st.image(os.path.join(base_path, "Feature_Impact.png"), caption="How different weather factors impact power.")
         else:
             st.warning("feature_importance.png not found.")
 
