@@ -1,0 +1,91 @@
+== GRID MANAGEMENT PROTOCOLS AND BEST PRACTICES ==
+
+--- SECTION 1: SOLAR VARIABILITY MANAGEMENT ---
+Protocol SV-01: High Irradiance Variability Response
+When solar irradiance drops more than 30% within a 1-hour window, grid operators must:
+1. Activate spinning reserves within 5 minutes.
+2. Issue ramp-up signal to peaker plants or gas turbines.
+3. Reduce export to the grid and prioritize local battery discharge.
+4. Notify demand-response participants to reduce load.
+
+Protocol SV-02: Cloud Cover Thresholds
+- Cloud cover < 20%: Normal operation. Solar output expected near capacity.
+- Cloud cover 20–50%: Moderate variability. Pre-charge batteries to 80% state-of-charge (SoC).
+- Cloud cover > 50%: High variability. Activate full battery backup. Engage grid import reserves.
+
+--- SECTION 2: BATTERY STORAGE BEST PRACTICES ---
+Protocol BS-01: Optimal Battery Charging Windows
+Charge batteries during peak solar hours (typically 09:00–14:00 local time) when irradiance exceeds 600 W/m².
+Avoid charging when SoC > 90% to preserve battery lifespan.
+Target a minimum 40% SoC at sunset to handle overnight baseload.
+
+Protocol BS-02: Discharge Priority Rules
+Discharge batteries when:
+- Grid frequency drops below 49.8 Hz (indicating under-supply).
+- Spot market electricity prices exceed $0.15/kWh.
+- Solar generation drops below 20% of rated capacity during daytime hours.
+
+Protocol BS-03: Battery Health Management
+Limit depth of discharge (DoD) to 80% of total capacity.
+Avoid rapid charge/discharge cycles exceeding 2C rate.
+Schedule maintenance discharge cycles monthly to calibrate State-of-Charge sensors.
+
+--- SECTION 3: GRID EXPORT AND IMPORT DECISIONS ---
+Protocol GE-01: Feed-in Tariff Optimization
+When solar generation exceeds local demand by more than 15%:
+1. Export surplus to the grid only when spot price > $0.08/kWh.
+2. If price < $0.08/kWh, store surplus in batteries.
+3. Log all export events with timestamps and watt-hours for settlement.
+
+Protocol GI-01: Grid Import Triggers
+Import from grid when:
+- Battery SoC < 20% and solar generation < 50 W/m².
+- Forecasted night demand exceeds stored energy by more than 10%.
+- Import price is below the cost of battery wear ($0.03/cycle equivalent).
+
+--- SECTION 4: DEMAND RESPONSE STRATEGIES ---
+Protocol DR-01: Peak Shaving
+Use solar + battery combination to flatten peak demand between 17:00–21:00.
+Pre-cool or pre-heat facilities during solar hours to shift HVAC loads.
+Alert industrial consumers 1 hour before expected peak to reschedule heavy loads.
+
+Protocol DR-02: Load Shedding Hierarchy
+In case of severe solar shortfall (> 60% generation loss):
+Priority 1 – Maintain critical loads (hospitals, data centers, water treatment).
+Priority 2 – Reduce commercial HVAC by 15%.
+Priority 3 – Suspend non-critical industrial processes.
+Priority 4 – Rolling residential load curtailment (5-minute blocks).
+
+--- SECTION 5: FORECASTING-BASED PRE-DISPATCH ---
+Protocol FP-01: Day-Ahead Scheduling
+Use ML-based solar forecasts (e.g., Linear Regression, LSTM) to pre-schedule:
+- Battery charge/discharge cycles.
+- Spinning reserve activation.
+- Demand response notifications.
+Submit day-ahead schedule to grid operator by 10:00 AM local time.
+
+Protocol FP-02: Intra-Day Adjustment
+Re-run forecast model every 4 hours.
+If forecast deviates > 20% from actual, trigger automatic reserve dispatch.
+Use ensemble forecasting during monsoon or winter cloud-cover seasons.
+
+--- SECTION 6: SAFETY AND ISLANDING PROTECTION ---
+Protocol IS-01: Anti-Islanding Measures
+All distributed solar systems must comply with IEEE 1547 anti-islanding standards.
+Automatic disconnection within 2 seconds when grid voltage deviates ±10% from nominal.
+Synchronization check before reconnecting to the main grid after an outage.
+
+Protocol IS-02: Fault Ride-Through
+Solar inverters must maintain grid connection during voltage dips of up to 15% for 0.5 seconds.
+During prolonged faults (>2 seconds), controlled shutdown with ramp-down at 10% per second.
+
+--- SECTION 7: REGULATORY AND REPORTING ---
+Protocol RR-01: Metering and Settlement
+Install bi-directional smart meters for all solar prosumers.
+Report net energy import/export to distribution company (DISCOM) monthly.
+Maintain 1-year data retention for regulatory audits.
+
+Protocol RR-02: Renewable Portfolio Standards
+Solar assets must contribute to RPS targets as mandated by local energy regulator.
+Document all curtailment events with reasons for regulatory submissions.
+Annual performance report must include capacity factor, availability factor, and PR (Performance Ratio).
