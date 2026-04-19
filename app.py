@@ -168,14 +168,14 @@ elif st.session_state.selected_tab == "📊 Training & Model Metrics":
     st.subheader("3. Actual vs Predicted Curve")
     p = os.path.join(base_path, "assets", "images", "Prediction.png")
     if os.path.exists(p):
-        st.image(p, use_container_width=True, caption="Sample test results showing high correlation.")
+        st.image(p, use_column_width=True, caption="Sample test results showing high correlation.")
     else:
         st.warning("Prediction.png not found.")
 
     st.subheader("4. Model Comparison")
     p = os.path.join(base_path, "assets", "images", "comparison.png")
     if os.path.exists(p):
-        st.image(p, use_container_width=True, caption="Comparison of two models trained on the same data.")
+        st.image(p, use_column_width=True, caption="Comparison of two models trained on the same data.")
     else:
         st.warning("comparison.png not found.")
 
@@ -198,7 +198,7 @@ elif st.session_state.selected_tab == "🤖 Grid Optimization Agent":
     st.subheader("Agent Workflow Architecture")
     workflow_path = os.path.join(base_path, "assets", "images", "Helios_Workflow.png")
     if os.path.exists(workflow_path):
-        st.image(workflow_path, use_container_width=True, caption="LangGraph 5-Node Agent Pipeline")
+        st.image(workflow_path, use_column_width=True, caption="LangGraph 5-Node Agent Pipeline")
     else:
         st.warning("Helios_Workflow.png not found.")
 
